@@ -72,3 +72,24 @@ select.addEventListener('input', function (event) {
     document.documentElement.style.setProperty('color-scheme', event.target.value);
     localStorage.colorScheme = event.target.value
 });
+
+let form = document.querySelector('form');
+
+// Check if form exists and add event listener
+form?.addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent the default form submission
+
+  let data = new FormData(form); // Collect form data
+  let params = []; // Array to store URL parameters
+
+  // Build URL parameters with proper encoding
+  for (let [name, value] of data) {
+    params.push(`${name}=${encodeURIComponent(value)}`);
+    console.log(name, value);
+  }
+
+  // Concatenate URL and open mail client
+  let url = `${form.action}?${params.join('&')}`;
+  console.log(url);
+  location.href = url;
+});
