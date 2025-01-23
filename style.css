@@ -1,5 +1,6 @@
 :root {
-  --color-accent: oklch(70% 0.1574 246.07);
+  --color-accent: oklch(70% 0.16 246);
+  color-scheme: light dark;
 }
 
 html {
@@ -7,13 +8,21 @@ html {
 }
 
 body {
-    /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
-       */
-    font: 100%/1.5 system-ui;
-    max-width: 100ch;
-    margin-inline: auto;
-    padding: 1em;
+  /* Set line height to 1.5 times the font size
+        and use the OS’s UI font as the website font
+      */
+  font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin-inline: auto;
+  padding: 1em;
+}
+
+.color-scheme {
+  position: absolute;
+  top: 4.6rem;
+  right: 1rem;
+  font-size: 80%;
+  font: inherit;
 }
 
 h1 {
@@ -30,11 +39,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 nav {
-    display: flex;
-    margin-bottom: 1em;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: oklch(80% 3% 200);
+  --border-color: oklch(35% 0.16 246);
+  display: flex;
+  margin-bottom: 1em;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--border-color);
 }
 
 nav a {
@@ -49,7 +59,7 @@ nav a.current {
   font-weight: bold;
   border-bottom-width: 0.4em;
   border-bottom-style: solid;
-  border-bottom-color: oklch(90% 3% 200);
+  border-bottom-color: var(--border-color);
   padding-bottom: 0.1em;
 }
 
@@ -57,7 +67,7 @@ nav a:hover {
   border-bottom-width: 0.4em;
   border-bottom-style: solid;
   border-bottom-color: var(--color-accent);
-  background-color: oklch(from var(--color-accent) 95% 5% h); 
+  background-color: color-mix(in oklch, var(--color-accent), canvas 70%); 
   padding-bottom: 0.1em;
 }
 
@@ -95,7 +105,6 @@ form button {
 }
 
 .cv {
-  color: oklch(10% 0.01% 240);
   padding: 1em;
   line-height: 1.6;
 }
@@ -115,7 +124,6 @@ form button {
 .cv header p {
   font-size: 1rem;
   margin: 0.5em 0;
-  color: oklch(40% 0.02% 210);
 }
 
 .cv section {
@@ -147,6 +155,5 @@ form button {
 .cv article time {
   display: block;
   font-size: 0.9rem;
-  color: oklch(50% 0.01% 240);
   margin-bottom: 0.5em;
 }

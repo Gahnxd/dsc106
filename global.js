@@ -8,9 +8,9 @@ function $$(selector, context = document) {
 let pages = [
     { url: 'index.html', title: 'Home' },
     { url: 'projects/index.html', title: 'Projects' },
+    { url: 'cv/index.html', title: 'CV' },
     { url: 'contact/index.html', title: 'Contact' },
     { url: 'https://github.com/Gahnxd', title: 'Github' },
-    { url: 'cv/index.html', title: 'CV' },
 ];
 
 // Create a new <nav> element and prepend it to the body
@@ -43,3 +43,32 @@ for (let p of pages) {
 
     nav.append(a);
 }
+
+// Add the color scheme switch dropdown
+document.body.insertAdjacentHTML(
+    'afterbegin',
+    `
+      <label class="color-scheme">
+          Theme:
+          <select>
+              <option value="light dark">Automatic</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+          </select>
+      </label>`
+  );
+
+let select = document.querySelector('.color-scheme select');
+
+// Check if there's a saved color scheme in localStorage on page load
+if (localStorage.colorScheme) {
+    document.documentElement.style.setProperty('color-scheme', localStorage.colorScheme);
+    select.value = localStorage.colorScheme;
+}
+
+// Set the color scheme based on the user's preference
+select.addEventListener('input', function (event) {
+    console.log('color scheme changed to', event.target.value);
+    document.documentElement.style.setProperty('color-scheme', event.target.value);
+    localStorage.colorScheme = event.target.value
+});
