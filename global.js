@@ -127,6 +127,9 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
     return;
   }
 
+  // Sort projects by proj.year in descending order
+  // project.sort((a, b) => b.year - a.year);
+
   // Loop over the projects and add them to the container
   for (let proj of project) {
     const article = document.createElement('article');
