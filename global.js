@@ -117,7 +117,7 @@ export async function fetchJSON(url) {
 // Test function
 // window.fetchJSON = fetchJSON;
 
-export function renderProjects(project, containerElement, headingLevel = 'h2') {
+export function renderProjects(project, containerElement, headingLevel = 'h2', home=false) {
   if (!containerElement) return; // Ensure the container is valid
   containerElement.innerHTML = ''; // Clear existing content
 
@@ -138,11 +138,27 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
     const validHeadings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
     const headingTag = validHeadings.includes(headingLevel) ? headingLevel : 'h2';
 
-    article.innerHTML = `
-      <${headingTag}>${proj.title}</${headingTag}>
-      <img src="${proj.image}" alt="${proj.title}">
-      <p>${proj.description}</p>
-    `;
+    if (proj.image.toString().includes("./image")) { // Image is local
+      if (home){ // 
+        article.innerHTML = `
+          <${headingTag}>${proj.title}</${headingTag}>
+          <img src="${proj.image}" alt="${proj.title}">
+          <p>${proj.description}</p>
+        `;
+      } else {
+        article.innerHTML = `
+          <${headingTag}>${proj.title}</${headingTag}>
+          <img src=".${proj.image}" alt="${proj.title}">
+          <p>${proj.description}</p>
+        `;
+      }
+    } else { // Image is URL
+      article.innerHTML = `
+          <${headingTag}>${proj.title}</${headingTag}>
+          <img src="${proj.image}" alt="${proj.title}">
+          <p>${proj.description}</p>
+        `;
+    }
 
     containerElement.appendChild(article);
   }

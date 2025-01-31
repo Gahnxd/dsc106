@@ -6,7 +6,7 @@ const latestProjects = projects.slice(0, 3);
 
 const projectsContainer = document.querySelector('.projects');
 
-renderProjects(latestProjects, projectsContainer, 'h3');
+renderProjects(latestProjects, projectsContainer, 'h3', true);
 
 const githubData = await fetchGitHubData('gahnxd');
 

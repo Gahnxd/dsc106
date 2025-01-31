@@ -10,5 +10,5 @@ if (titleElement) {
     titleElement.textContent = `${projects.length} Projects`;
 }
 
-renderProjects(projects, projectsContainer, 'h2');
+renderProjects(projects, projectsContainer, 'h2', false);
 
