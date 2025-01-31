@@ -1,7 +1,7 @@
 [
     {
         "title": "Inventory Forecasting Case Study",
-        "image": "../images/inventory_forcasting.png",
+        "image": "./images/inventory_forcasting.png",
         "year": "2024",
         "description": "Developed machine learning models to optimize inventory levels and forecast sales trends across product categories. Conducted data analysis to identify key trends and improve model performance. Provided insights to enhance inventory management, boost profitability, and reduce overstock."
     },
