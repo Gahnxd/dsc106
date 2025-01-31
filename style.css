@@ -71,6 +71,25 @@ nav a:hover {
   padding-bottom: 0.1em;
 }
 
+.title_name {
+  display: flex;
+  align-items:center;
+  padding: 0.5em;
+  flex-wrap: wrap;
+}
+
+.title_name h1 {
+  margin-left: 0.8em;
+}
+
+.title_name img {
+  width: 10em;
+  height: 10em;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
 form {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -156,4 +175,24 @@ form button {
   display: block;
   font-size: 0.9rem;
   margin-bottom: 0.5em;
+}
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Ensure a 6-column layout */
+  gap: 10px;
+  text-align: center;
+}
+
+#profile-stats dt {
+  text-transform: uppercase;
+  color: oklch(60% 3% 200);
+  font-size: 1em;
+  grid-row: 1; /* Place all <dt> elements in the first row */
+}
+
+#profile-stats dd {
+  font-size: 1.2em;
+  grid-row: 2; /* Place all <dd> elements in the second row */
+  margin: 0;
 }
