@@ -161,6 +161,37 @@ form button {
   overflow: visible;
 }
 
+&:has(path:hover) {
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+.selected {
+  --color: var(--color-accent) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
+
+  &:is(li){
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: large;
+    font-weight: bold;
+
+    .swatch {
+      width: 1.1em;
+      height: 1.1em;
+    }
+  }
+}
+
+path {
+  cursor: pointer;
+}
+
 .swatch {
   display: inline-flex;
   width: 1em;
@@ -184,6 +215,7 @@ form button {
   display: flex;
   align-items: center;
   gap: 0.5em;
+  font-size: large;
 }
 
 /* CV Page */
