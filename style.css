@@ -38,6 +38,7 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+/* Navigation Bar */
 nav {
   --border-color: oklch(35% 0.16 246);
   display: flex;
@@ -67,10 +68,13 @@ nav a:hover {
   border-bottom-width: 0.4em;
   border-bottom-style: solid;
   border-bottom-color: var(--color-accent);
-  background-color: color-mix(in oklch, var(--color-accent), canvas 60%); 
+  /* background-color: color-mix(in oklch, var(--color-accent), canvas 60%);  */
   padding-bottom: 0.1em;
+  font-weight: bold;
+  color: var(--color-accent);
 }
 
+/* Home Page */
 .title_name {
   display: flex;
   align-items:center;
@@ -89,7 +93,7 @@ nav a:hover {
   border-radius: 50%;
 }
 
-
+/* Contact Page */
 form {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -107,6 +111,7 @@ form button {
   font: inherit;
 }
 
+/* Projects Page */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
@@ -129,6 +134,59 @@ form button {
   object-fit: fill;
 }
 
+.projects article p {
+  margin-bottom: 0;
+}
+
+.projects article #year {
+  font-size: 1em;
+  color: oklch(60% 3% 200);
+  font-style: italic;
+  font-family: 'Baskerville', serif;
+  font-variant-numeric: oldstyle-nums;
+  margin-top: 0;
+}
+
+/* Project Pie Plot */
+.container {
+  display: flex;
+  gap: 1em;
+  align-items:center;
+  flex-wrap: wrap;
+}
+
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+  overflow: visible;
+}
+
+.swatch {
+  display: inline-flex;
+  width: 1em;
+  height: 1em;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color);
+  border-radius: 50%;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid oklch(80% 3% 200);
+  height: fit-content;
+  flex: 1;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+/* CV Page */
 .cv {
   padding: 1em;
   line-height: 1.6;
@@ -183,6 +241,7 @@ form button {
   margin-bottom: 0.5em;
 }
 
+/* Github Stats */
 #profile-stats dl {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Ensure a 6-column layout */

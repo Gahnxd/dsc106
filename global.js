@@ -143,20 +143,29 @@ export function renderProjects(project, containerElement, headingLevel = 'h2', h
         article.innerHTML = `
           <${headingTag}>${proj.title}</${headingTag}>
           <img src="${proj.image}" alt="${proj.title}">
+          <div>
           <p>${proj.description}</p>
+          <p id="year">${proj.year}</p>
+          </div>
         `;
       } else {
         article.innerHTML = `
           <${headingTag}>${proj.title}</${headingTag}>
           <img src=".${proj.image}" alt="${proj.title}">
+          <div>
           <p>${proj.description}</p>
+          <p id="year">${proj.year}</p>
+          </div>
         `;
       }
     } else { // Image is URL
       article.innerHTML = `
           <${headingTag}>${proj.title}</${headingTag}>
           <img src="${proj.image}" alt="${proj.title}">
+          <div>
           <p>${proj.description}</p>
+          <p id="year">${proj.year}</p>
+          </div>
         `;
     }
 

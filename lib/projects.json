@@ -15,7 +15,7 @@
         "title": "Wine Recommender",
         "image": "./images/wine_recommender.webp",
         "year": "2025",
-        "description": "<i>Project is still in development</i> <br> Wine recommender system that uses both content-based predictions and collaborative filtering to provide personalized wine recommendations."
+        "description": "Wine recommender system that uses both content-based predictions and collaborative filtering to provide personalized wine recommendations. <br> <i>Project is still in development</i>."
     },
     {
         "title": "League of Legends Side and Picks Analysis",
