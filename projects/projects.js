@@ -85,10 +85,14 @@ function renderPieChart(projectsGiven) {
                 if (arcs.length === 1) {
                     pie.selectAll('path')
                     .attr('class', '');
-                    renderPieChart(projects);
                     renderProjects(projects, projectsContainer, 'h2', false);
+                    renderPieChart(projects);
                     if (titleElement) {
-                        titleElement.textContent = `${projects.length} Project`;
+                        if (projects.length === 1){
+                            titleElement.textContent = `${projects.length} Project`;
+                        } else{
+                            titleElement.textContent = `${projects.length} Projects`;
+                        }
                     }
                     searchInput.value = '';
                     selectedIndex = -1;
