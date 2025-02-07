@@ -161,6 +161,10 @@ form button {
   overflow: visible;
 }
 
+#empty-pie-plot{
+  overflow: hidden;
+}
+
 &:has(path:hover) {
   path:not(:hover) {
     opacity: 0.5;
@@ -207,6 +211,7 @@ path {
   padding: 1em;
   margin: 1em;
   border: 1px solid oklch(80% 3% 200);
+  border-radius: 0.5em;
   height: fit-content;
   flex: 1;
 }
@@ -216,6 +221,34 @@ path {
   align-items: center;
   gap: 0.5em;
   font-size: large;
+}
+
+.searchBar {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin: 1em;
+  width: 100%;
+  height: 3em;
+  padding: 0.5em;
+  border: 1px solid oklch(80% 3% 200);
+  border-radius: 0.5em;
+}
+
+.resetProject {
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  border: 1px solid oklch(80% 3% 200);
+  border-radius: 0.5em;
+  width: 6em;
+  height: 3em;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.resetProject:hover {
+  background-color: oklch(80% 3% 200);
 }
 
 /* CV Page */
@@ -228,7 +261,6 @@ path {
   text-align: center;
   margin-bottom: 2em;
   font: 100%/1.5 'times new roman', serif;
-
 }
 
 .cv header h1 {

@@ -123,12 +123,12 @@ export function renderProjects(project, containerElement, headingLevel = 'h2', h
 
   if (!project || project.length == 0) {
     // Display a placeholder message if there are no projects
-    containerElement.innerHTML = `<p>No projects available at the moment.</p>`;
+    containerElement.innerHTML = `<p>No projects available at the moment...</p>`;
     return;
   }
 
-  // Sort projects by proj.year in descending order
-  // project.sort((a, b) => b.year - a.year);
+  //Sort projects by proj.year in descending order
+  project.sort((a, b) => b.year - a.year);
 
   // Loop over the projects and add them to the container
   for (let proj of project) {
