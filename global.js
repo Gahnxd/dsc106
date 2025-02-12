@@ -11,6 +11,7 @@ let pages = [
     { url: 'cv/index.html', title: 'CV' },
     { url: 'contact/index.html', title: 'Contact' },
     { url: 'https://github.com/Gahnxd', title: 'Github' },
+    { url: 'meta/index.html', title: 'Meta' }
 ];
 
 // Create a new <nav> element and prepend it to the body
