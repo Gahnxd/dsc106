@@ -325,3 +325,148 @@ path {
   grid-row: 2; /* Place all <dd> elements in the second row */
   margin: 0;
 }
+
+/* Meta Page */
+#stats dl{
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+  text-align: center;
+}
+
+#stats dt {
+  text-transform: uppercase;
+  color: oklch(60% 3% 200);
+  font-size: 1em;
+  grid-row: 1;
+}
+
+#stats dd {
+  font-size: 1.2em;
+  grid-row: 2;
+  margin: 0;
+}
+
+dl.info {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  margin: 0;
+  padding: 0.5em;
+  font-size: 0.8em;
+  line-height: 1.5;
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+}
+
+dl.info[hidden]:not(:focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+dl.info dt{
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+dl.info dd {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  backdrop-filter: blur(12px);
+  padding: 1em;
+}
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8; /* 5 + 3 */
+  }
+}
+
+.selection {
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
+  fill: var(--color-accent);
+}
+
+circle.selected {
+  fill: var(--color-accent);
+}
+
+#stats-box {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0);
+  width: fit-content;
+  padding: 0.1em;
+  margin: 0.5em;
+}
+
+.selected-box {
+  border: 1px solid oklch(80% 3% 200) !important;
+  border-radius: 0.5em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: rgba(84, 172, 255, 0.07);
+  backdrop-filter: blur(12px);
+  transition-duration: 300ms;
+}
+
+#selection-count {
+  text-align: center;
+  margin-left: 0em;
+  margin-right: 0em;
+  margin-top: 0.2em;
+  margin-bottom: 0em;
+}
+
+.selected-box #selection-count {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: oklch(60% 3% 200);
+}
+
+.selected-stats {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  width: 13em;
+  margin: 0;
+  padding: 0.5em;
+}
+
+.selected-stats dt {
+  text-transform: uppercase;
+  /* font-weight: bold; */
+}
+
+.selected-stats dd {
+  margin-left: 0em;
+  margin-right: 0em;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  text-align: left;
+}
