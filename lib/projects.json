@@ -3,72 +3,84 @@
         "title": "Inventory Forecasting Case Study",
         "image": "./images/inventory_forcasting.png",
         "year": "2024",
-        "description": "Developed machine learning models to optimize inventory levels and forecast sales trends across product categories. Conducted data analysis to identify key trends and improve model performance. Provided insights to enhance inventory management, boost profitability, and reduce overstock."
+        "description": "Developed machine learning models to optimize inventory levels and forecast sales trends across product categories. Conducted data analysis to identify key trends and improve model performance. Provided insights to enhance inventory management, boost profitability, and reduce overstock.",
+        "link": ""
     },
     {
         "title": "Soil Behavior Prediction for Infrastructure Design",
         "image": "./images/soil_behavior.png",
         "year": "2023",
-        "description": "Developed a soil behavior prediction model using web-scraped USGS data and Gaussian Process Regression. Created 3D visualizations to optimize drilling and construction while delivering reports to enhance research accuracy and infrastructure planning."
+        "description": "Developed a soil behavior prediction model using web-scraped USGS data and Gaussian Process Regression. Created 3D visualizations to optimize drilling and construction while delivering reports to enhance research accuracy and infrastructure planning.",
+        "link": ""
     },
     {
         "title": "Wine Recommender",
         "image": "./images/wine_recommender.webp",
         "year": "2025",
-        "description": "Wine recommender system that uses both content-based predictions and collaborative filtering to provide personalized wine recommendations. <br> <i>Project is still in development</i>."
+        "description": "Wine recommender system that uses both content-based predictions and collaborative filtering to provide personalized wine recommendations. <br> <i>Project is still in development</i>.",
+        "link": ""
     },
     {
         "title": "League of Legends Side and Picks Analysis",
         "image": "./images/league_of_legends.png",
         "year": "2024",
-        "description": "Analyzed 10,000+ League of Legends matches (2022-2024) to evaluate how starting side, champion picks, and early-game stats influence game outcomes. Key insights can help coaches refine strategies and maximize in-game advantages."
+        "description": "Analyzed 10,000+ League of Legends matches (2022-2024) to evaluate how starting side, champion picks, and early-game stats influence game outcomes. Key insights can help coaches refine strategies and maximize in-game advantages.",
+        "link": ""
     },
     {
         "title": "Bikeshare Analysis",
         "image": "./images/bikeshare_analysis.png",
         "year": "2024",
-        "description": "Analyzed 4.4 million bike rides to study weather and daylight effects on Washington D.C.'s Capital Bikeshare users. Casual riders took longer rides in good weather, while members rode consistently. Suggested weather-based promotions for casual users and reliable commuting options for members."
+        "description": "Analyzed 4.4 million bike rides to study weather and daylight effects on Washington D.C.'s Capital Bikeshare users. Casual riders took longer rides in good weather, while members rode consistently. Suggested weather-based promotions for casual users and reliable commuting options for members.",
+        "link": ""
     },
     {
         "title": "AWS Cloud Practitioner Certification",
         "image": "./images/aws_cloud_prac.png",
         "year": "2024",
-        "description": "Demonstrated expertise in AWS services, cloud architecture, and security best practices. Optimized cloud costs by leveraging AWS pricing models and budgeting tools to enhance efficiency and reduce expenses."
+        "description": "Demonstrated expertise in AWS services, cloud architecture, and security best practices. Optimized cloud costs by leveraging AWS pricing models and budgeting tools to enhance efficiency and reduce expenses.",
+        "link": ""
     },
     {
         "title": "IBM Data Science Professional Certificate",
         "image": "./images/ibm_dsc.png",
         "year": "2023",
-        "description": "Developed regression models to predict housing prices and trained machine learning models for loan defaults and rocket reusability. Built a dynamic Python dashboard to monitor US flight reliability using Plotly."
+        "description": "Developed regression models to predict housing prices and trained machine learning models for loan defaults and rocket reusability. Built a dynamic Python dashboard to monitor US flight reliability using Plotly.",
+        "link": ""
     },
     {
         "title": "Image Processor & Classifier from Scratch",
         "image": "./images/image_proc.jpg",
         "year": "2023",
-        "description": "Developed an image processor and classifier from scratch using Python. Implemented image processing techniques such as grayscale, adding blur, and edge detection. Trained a KNN classifier to classify images based on day and night."
+        "description": "Developed an image processor and classifier from scratch using Python. Implemented image processing techniques such as grayscale, adding blur, and edge detection. Trained a KNN classifier to classify images based on day and night.",
+        "link": ""
     },
     {
-        "title": "At sequi minima quod!",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "year": "2022",
-        "description": "Dolorum delectus dolor iusto, quo nam incidunt? Dignissimos, doloribus doloremque sapiente enim odio\n                animi deserunt nam. Iusto dolorum error ut quis, ducimus earum minus, maxime laudantium porro laborum,\n                tenetur aliquam!"
+        "title": "Pedal Powered Perspectives",
+        "image": "./images/pedal_powered_perspectives.png",
+        "year": "2025",
+        "description": "Developed an interactive map to visualize Boston's bike traffic. Implemented time-based filtering and a custom legend for better insights. Optimized geospatial data processing for efficient map rendering.",
+        "link": "https://gahnxd.github.io/pedal-powered-perspectives/"
     },
     {
         "title": "Accusamus at quo laborum.",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "year": "2022",
-        "description": "Placeat harum at fuga quia iste. Voluptatem earum eius optio, quod natus nesciunt nihil quisquam soluta\n                saepe odit id reprehenderit ducimus consequatur nam nobis minus, ullam ut. Modi, quasi facere."
+        "description": "Placeat harum at fuga quia iste. Voluptatem earum eius optio, quod natus nesciunt nihil quisquam soluta\n                saepe odit id reprehenderit ducimus consequatur nam nobis minus, ullam ut. Modi, quasi facere.",
+        "link": ""
     },
     {
         "title": "Odit ipsum fugit consectetur.",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "year": "2022",
-        "description": "Beatae quasi aspernatur provident aliquam adipisci enim accusamus culpa error, natus veritatis est\n                incidunt ad rem, quia quidem possimus nemo deserunt assumenda? Optio, obcaecati vitae nam totam expedita\n                incidunt quisquam."
+        "description": "Beatae quasi aspernatur provident aliquam adipisci enim accusamus culpa error, natus veritatis est\n                incidunt ad rem, quia quidem possimus nemo deserunt assumenda? Optio, obcaecati vitae nam totam expedita\n                incidunt quisquam.",
+        "link": ""
     },
     {
         "title": "Fuga tempore nemo quaerat?",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "year": "2023",
-        "description": "Temporibus quam illo eveniet sapiente rem nemo repellat similique. Odit modi ipsum reiciendis eaque, illo\n                ea similique repellat, officia obcaecati sunt iusto corrupti fugit, tempora suscipit minus! Molestiae,\n                facilis assumenda?"
+        "description": "Temporibus quam illo eveniet sapiente rem nemo repellat similique. Odit modi ipsum reiciendis eaque, illo\n                ea similique repellat, officia obcaecati sunt iusto corrupti fugit, tempora suscipit minus! Molestiae,\n                facilis assumenda?",
+        "link": ""
     }
 ]

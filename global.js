@@ -116,7 +116,7 @@ export async function fetchJSON(url) {
 // Test function
 // window.fetchJSON = fetchJSON;
 
-export function renderProjects(project, containerElement, headingLevel = 'h2', home=false) {
+export function renderProjects(project, containerElement, headingLevel = 'h2', home=false, n=project.length) {
   if (!containerElement) return; // Ensure the container is valid
   containerElement.innerHTML = ''; // Clear existing content
 
@@ -129,6 +129,19 @@ export function renderProjects(project, containerElement, headingLevel = 'h2', h
   //Sort projects by proj.year in descending order
   project.sort((a, b) => b.year - a.year);
 
+  if (n > 0 && n < project.length){
+    project = project.slice(0, n);
+  }
+
+  if (!containerElement) return; // Ensure the container is valid
+  containerElement.innerHTML = ''; // Clear existing content
+
+  if (!project || project.length == 0) {
+    // Display a placeholder message if there are no projects
+    containerElement.innerHTML = `<p>No projects available at the moment...</p>`;
+    return;
+  }
+
   // Loop over the projects and add them to the container
   for (let proj of project) {
     const article = document.createElement('article');
@@ -136,6 +149,11 @@ export function renderProjects(project, containerElement, headingLevel = 'h2', h
     // Validate heading level (ensure it's h1-h6)
     const validHeadings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
     const headingTag = validHeadings.includes(headingLevel) ? headingLevel : 'h2';
+
+    let projUrl = "";
+    if (proj.link) {
+      projUrl = "<a href='" + proj.link + "' target='_blank' class='project-link'>View</a>";
+    }
 
     if (proj.image.toString().includes("./image")) { // Image is local
       if (home){ // 
@@ -145,6 +163,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2', h
           <div>
           <p>${proj.description}</p>
           <p id="year">${proj.year}</p>
+          ${projUrl}
           </div>
         `;
       } else {
@@ -154,6 +173,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2', h
           <div>
           <p>${proj.description}</p>
           <p id="year">${proj.year}</p>
+          ${projUrl}
           </div>
         `;
       }
@@ -164,6 +184,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2', h
           <div>
           <p>${proj.description}</p>
           <p id="year">${proj.year}</p>
+          
           </div>
         `;
     }

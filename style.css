@@ -147,6 +147,14 @@ form button {
   margin-top: 0;
 }
 
+.project-link {
+  font-size: 0.9em;
+  color: oklch(30% 0.16 246);
+  font-weight: bold;
+  margin-top: 0;
+  justify-content: left;
+}
+
 /* Project Pie Plot */
 .container {
   display: flex;
