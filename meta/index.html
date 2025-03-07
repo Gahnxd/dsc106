@@ -14,7 +14,24 @@
     <h1>Meta Stats</h1>
     <div id="stats"></div>
     <h2>Commits by time of day</h2>
-    <div id="chart"></div>
+    <!-- <div id="slider-container">
+        <label>
+            Show commits until:
+            <input id="commit-slider" type="range" min="0" max="100" value="100" step="1">
+            <time id="selectedTime"></time>
+        </label>
+    </div> -->
+
+    <dl class="files"></dl>
+
+    <div id="scrollytelling">
+        <div id="scroll-container">
+            <div id="spacer"></div>
+            <div id="items-container"></div>
+        </div>
+
+        <div id="chart"></div>
+    </div>
 
     <div id="stats-box">
         <p id="selection-count">No commits selected</p>

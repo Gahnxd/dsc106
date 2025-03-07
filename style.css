@@ -12,7 +12,7 @@ body {
         and use the OS’s UI font as the website font
       */
   font: 100%/1.5 system-ui;
-  max-width: 116ch;
+  max-width: min(120ch, 80vw);
   margin-inline: auto;
   padding: 1em;
 }
@@ -36,6 +36,14 @@ h2 {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
+}
+
+a {
+  color: oklch(35% 0.16 246);
+}
+
+a:visited {
+  color: oklch(35% 0.16 246);
 }
 
 /* Navigation Bar */
@@ -400,10 +408,12 @@ circle {
   transition: 200ms;
   transform-origin: center;
   transform-box: fill-box;
+  cursor: pointer;
 }
 
 circle:hover {
-  transform: scale(1.5);
+  transform: scale(1.3);
+  cursor: pointer;
 }
 
 @keyframes marching-ants {
@@ -477,4 +487,100 @@ circle.selected {
   margin-top: 0em;
   margin-bottom: 0em;
   text-align: left;
+}
+
+#slider-container label{
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+}
+
+#commit-slider {
+  flex: 1;
+  cursor: pointer;
+  accent-color: steelblue;
+}
+
+#selectedTime {
+  margin-left: auto;
+}
+
+.files {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  margin: 20px 0;
+  gap: 15px 1em;
+}
+
+.files > div {
+  display: contents; /* Makes the children (dt and dd) behave as direct grid items */
+}
+
+.files dt {
+  grid-column: 1;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.files dd {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15em;
+  padding-top: 0.6em;
+  margin-left: 0;
+}
+
+
+.line {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  /* background: steelblue; */
+  border-radius: 50%;
+  margin: 0.1em;
+}
+
+#scrollytelling {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+#scroll-container {
+  grid-column: 1;
+  position: relative;
+  width: 95%;
+  height: 350px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  margin-bottom: 50px;
+}
+
+#spacer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: none;
+  pointer-events: none;
+}
+
+#items-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.item {
+  padding: 0px 20px;
+  box-sizing: border-box;
+  border-bottom: 2px solid #eee;
+  text-align: left;
+  align-items: center;
+  height: 80px;
 }
