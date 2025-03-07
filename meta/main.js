@@ -189,8 +189,8 @@ function displayStats(numCommits = commits.length, commitMaxTime = d3.max(commit
     // Create the dl element
     const dl = d3.select('#stats').append('dl').attr('class', 'stats');
 
-    console.log('numCommits', numCommits);
-    console.log('commitMaxTime', commitMaxTime);
+    // console.log('numCommits', numCommits);
+    // console.log('commitMaxTime', commitMaxTime);
 
     // Add total commits
     dl.append('dt').text('Commits');
@@ -337,9 +337,6 @@ function updateFileList(filteredCommits) {
         // First, highlight rows that will move
         allFiles.each(function(d, i) {
             const originalIndex = +d3.select(this).attr('data-original-index');
-            if (d.name === 'global.js'){
-                console.log(d.name, 'originalIndex', originalIndex, 'new index', i);
-            }
             // console.log(d.name, 'originalIndex', originalIndex, 'new index', i);
             if (originalIndex !== i) {                
                 d3.select(this).select('dt')

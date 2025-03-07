@@ -524,10 +524,15 @@ circle.selected {
 .files dt {
   grid-column: 1;
   text-align: left;
-  font-weight: bold;
-  color: #333;
+  /* font-weight: bold; */
+  /* color: #333; */
   white-space: nowrap;
   transition: background-color 0.3s, padding 0.3s, border-radius 0.3s;
+}
+
+.files dt code{
+  font-family: 'Lucida Console', 'Courier New', Monospace, Monospace;
+  font-size: 13px;
 }
 
 .files dd {
