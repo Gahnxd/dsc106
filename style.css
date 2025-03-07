@@ -405,7 +405,7 @@ dl.info dd {
 }
 
 circle {
-  transition: 200ms;
+  transition: fill 0.3s, fill-opacity 0.3s;
   transform-origin: center;
   transform-box: fill-box;
   cursor: pointer;
