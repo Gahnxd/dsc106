@@ -507,22 +507,27 @@ circle.selected {
 
 .files {
   grid-column: 2;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  margin: 20px 0;
-  gap: 15px 1em;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .files > div {
-  display: contents; /* Makes the children (dt and dd) behave as direct grid items */
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  transition: transform 1s ease-out, background-color 0.3s;
+  gap: 0.5em;
+  padding: 0.25em 0;
+  will-change: transform;
 }
 
 .files dt {
   grid-column: 1;
+  text-align: left;
   font-weight: bold;
   color: #333;
-  text-align: left;
   white-space: nowrap;
+  transition: background-color 0.3s, padding 0.3s, border-radius 0.3s;
 }
 
 .files dd {
@@ -533,6 +538,7 @@ circle.selected {
   gap: 0.15em;
   padding-top: 0.6em;
   margin-left: 0;
+  transition: all 0.2s ease-out;
 }
 
 
@@ -543,6 +549,7 @@ circle.selected {
   /* background: steelblue; */
   border-radius: 50%;
   margin: 0.1em;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out, background-color 0.2s ease;
 }
 
 #scrollytelling {

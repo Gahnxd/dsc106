@@ -247,34 +247,137 @@ function filterCommitsByTime() {
 }
 
 function updateFileList(filteredCommits) {
-    let lines = filteredCommits.flatMap(d => d.lines); // Get all lines from commits
-    let files = d3.groups(lines, d => d.file) // Group by file
-        .map(([name, lines]) => ({ name, lines })); // Convert to array of objects
+    let lines = filteredCommits.flatMap(d => d.lines);
+    let files = d3.groups(lines, d => d.file)
+        .map(([name, lines]) => ({ name, lines }));
 
-    files = d3.sort(files, (d) => -d.lines.length); // Sort by number of lines
+    // Sort by number of lines
+    files = d3.sort(files, (d) => -d.lines.length);
 
-    // Select and clear existing file list
-    d3.select('.files').selectAll('div').remove();
-
-    let filesContainer = d3.select('.files')
+    // Use data join pattern
+    const filesContainer = d3.select('.files')
         .selectAll('div')
-        .data(files)
-        .enter()
-        .append('div');
-
-    // Append filename
-    filesContainer.append('dt')
+        .data(files, d => d.name);
+        
+    // EXIT - Remove files that no longer exist
+    filesContainer.exit()
+        .transition()
+        .duration(150)
+        .style('opacity', 0)
+        .style('height', 0)
+        .remove();
+        
+    // ENTER - Create new elements for new files
+    const enterFiles = filesContainer.enter()
+        .append('div')
+        .style('opacity', 0)
+        .style('transform', 'translateY(10px)')
+        // Add a data attribute to track original position
+        .attr('data-original-index', (_, i) => i);
+    
+    // Add filename to new files
+    enterFiles.append('dt')
         .append('code')
         .text(d => d.name);
+    
+    // Add dots container to new files    
+    enterFiles.append('dd');
+    
+    // Animate new files in
+    enterFiles
+        .transition()
+        .duration(150)
+        .style('opacity', 1)
+        .style('transform', 'translateY(0)');
+    
+    // UPDATE + ENTER - Handle all files
+    const allFiles = enterFiles.merge(filesContainer);
+    
+    // Update file names and counts
+    allFiles.select('dt code')
+        .text(d => d.name);
+        
+    // allFiles.select('dt')
+    //     .each(function(d) {
+    //         let small = d3.select(this).select('small');
+    //         if (small.empty()) {
+    //             d3.select(this).append('small')
+    //                 .text(` ${d.lines.length} lines`);
+    //         } else {
+    //             small.text(` ${d.lines.length} lines`);
+    //         }
+    //     });
+    
+    // Update dots in each file (simplified for reliability)
+    let maxDotsCount = 0;
+    allFiles.select('dd').each(function(d) {
+        const dotsContainer = d3.select(this);
+        maxDotsCount = Math.max(maxDotsCount, d.lines.length);
+        
+        // Clear and rebuild dots for reliability
+        dotsContainer.selectAll('.line').remove();
+        
+        // Add all dots at once (more reliable than complex transitions)
+        dotsContainer.selectAll('.line')
+            .data(d.lines)
+            .enter()
+            .append('div')
+            .attr('class', 'line')
+            .style('background', l => l.type ? fileTypeColors(l.type) : '#888888')
+            .style('transform', 'scale(0)')
+            .style('opacity', 0)
+            .transition()
+            .duration(150)
+            .delay((_, i) => Math.min(i * 1, 100))
+            .style('transform', 'scale(1)')
+            .style('opacity', 1);
+    });
 
-    // Append number of lines
-    filesContainer.append('dd')
-        .selectAll('div')
-        .data(d => d.lines)
-        .enter()
-        .append('div')
-        .attr('class', 'line')
-        .style('background', d => fileTypeColors(d.type)); // Assign color based on type
+    // Calculate delay based on number of dots (more dots = slightly longer delay)
+    const sortDelay = Math.min(150 + maxDotsCount * 1, 300);
+    
+    // SORTING ANIMATION with visual highlight
+    setTimeout(() => {
+        // First, highlight rows that will move
+        allFiles.each(function(d, i) {
+            const originalIndex = +d3.select(this).attr('data-original-index');
+            if (originalIndex !== i) {
+                d3.select(this).select('dt')
+                    .transition()
+                    .duration(100)
+                    .style('background-color', 'rgba(50, 165, 251, 0.3)')
+                    .style('border-radius', '3px')
+                    .style('padding', '2px');
+            }
+        });
+        
+        // Then after a small delay, do the actual sorting
+        setTimeout(() => {
+            // Apply sorting with transition
+            allFiles.each(function(d, i) {
+                // Store current y position
+                const currentY = this.getBoundingClientRect().top;
+                
+                // Set the order based on sorted position
+                d3.select(this)
+                    .style('position', 'relative')
+                    .attr('data-original-index', i)
+                    .transition()
+                    .duration(300)
+                    .delay(i * 100) // Stagger the sort animation
+                    .style('order', i)
+                    .style('background-color', 'transparent')
+                    .style('transform', 'translateY(0)')
+                    .on('end', function() {
+                        // Remove highlight when done
+                        d3.select(this).select('dt')
+                            .style('background-color', null)
+                            .style('border-radius', null)
+                            .style('padding', null);
+                    });
+            });
+        }, 150);
+    }, sortDelay);
 }
 
 // Plot
