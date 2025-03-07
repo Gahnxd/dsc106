@@ -81,7 +81,7 @@ function renderFileItems(startIndex) {
     // sort commits by date
     let sorted = commits.sort((a, b) => a.datetime - b.datetime);
 
-    let newFileSlice = sorted.slice(startIndex, endIndex);
+    let newFileSlice = sorted.slice(0, endIndex);
 
     let fileDivs = fileItemsContainer.selectAll("div")
         .data(sorted)
@@ -273,7 +273,7 @@ function updateFileList(filteredCommits) {
         .style('opacity', 0)
         .style('transform', 'translateY(10px)')
         // Add a data attribute to track original position
-        .attr('data-original-index', (_, i) => i);
+        .attr('data-original-index', (_, i) => 0);
     
     // Add filename to new files
     enterFiles.append('dt')
@@ -296,17 +296,6 @@ function updateFileList(filteredCommits) {
     // Update file names and counts
     allFiles.select('dt code')
         .text(d => d.name);
-        
-    // allFiles.select('dt')
-    //     .each(function(d) {
-    //         let small = d3.select(this).select('small');
-    //         if (small.empty()) {
-    //             d3.select(this).append('small')
-    //                 .text(` ${d.lines.length} lines`);
-    //         } else {
-    //             small.text(` ${d.lines.length} lines`);
-    //         }
-    //     });
     
     // Update dots in each file (simplified for reliability)
     let maxDotsCount = 0;
@@ -341,13 +330,19 @@ function updateFileList(filteredCommits) {
         // First, highlight rows that will move
         allFiles.each(function(d, i) {
             const originalIndex = +d3.select(this).attr('data-original-index');
-            if (originalIndex !== i) {
+            if (d.name === 'global.js'){
+                console.log(d.name, 'originalIndex', originalIndex, 'new index', i);
+            }
+            // console.log(d.name, 'originalIndex', originalIndex, 'new index', i);
+            if (originalIndex !== i) {                
                 d3.select(this).select('dt')
                     .transition()
                     .duration(100)
                     .style('background-color', 'rgba(50, 165, 251, 0.3)')
                     .style('border-radius', '3px')
                     .style('padding', '2px');
+
+                console.log('highlighted', d.name);
             }
         });
         
@@ -375,8 +370,10 @@ function updateFileList(filteredCommits) {
                             .style('border-radius', null)
                             .style('padding', null);
                     });
+
+                console.log('sorted', d.name, 'to', i);
             });
-        }, 150);
+        }, 300);
     }, sortDelay);
 }
 
@@ -404,6 +401,7 @@ function createScatterplot(filteredCommits){
         .nice();
     
     yScale = d3
+
         .scaleLinear()
         .domain([0, 24])
         .range([height, 0]);
