@@ -42,7 +42,7 @@ function renderItems(startIndex) {
     // sort commits by date
     let sorted = commits.sort((a, b) => a.datetime - b.datetime);
 
-    let newCommitSlice = sorted.slice(startIndex, endIndex);
+    let newCommitSlice = sorted.slice(0, endIndex);
 
     let commitDivs = itemsContainer.selectAll("div")
         .data(sorted)
@@ -67,6 +67,10 @@ function renderItems(startIndex) {
                 <b>${ d3.rollups(d.lines, D => D.length, d => d.file).length } files</b>. 
             `;
         });
+
+    let maxTime = sorted[endIndex - 1].datetime;
+
+    displayStats(endIndex-1, maxTime);
 
     // Update the scatterplot based on scrolling commits
     createScatterplot(newCommitSlice);
@@ -173,7 +177,7 @@ function processCommits() {
     NUM_ITEMS = commits.length;
 }
 
-function displayStats() {
+function displayStats(numCommits = commits.length, commitMaxTime = d3.max(commits, d => d.datetime)) {
     // Process commits first
     processCommits();
 
@@ -185,9 +189,12 @@ function displayStats() {
     // Create the dl element
     const dl = d3.select('#stats').append('dl').attr('class', 'stats');
 
+    console.log('numCommits', numCommits);
+    console.log('commitMaxTime', commitMaxTime);
+
     // Add total commits
     dl.append('dt').text('Commits');
-    dl.append('dd').text(filteredCommits.length);
+    dl.append('dd').text(numCommits);
 
     // Add total authors
     dl.append('dt').text('Authors');
@@ -342,7 +349,7 @@ function updateFileList(filteredCommits) {
                     .style('border-radius', '3px')
                     .style('padding', '2px');
 
-                console.log('highlighted', d.name);
+                // console.log('highlighted', d.name);
             }
         });
         
@@ -371,7 +378,7 @@ function updateFileList(filteredCommits) {
                             .style('padding', null);
                     });
 
-                console.log('sorted', d.name, 'to', i);
+                // console.log('sorted', d.name, 'to', i);
             });
         }, 300);
     }, sortDelay);
@@ -383,7 +390,6 @@ function createScatterplot(filteredCommits){
     const height = 600;
 
     d3.select('svg').remove(); // First, clear the existing scatterplot
-    displayStats();
     
     const svg = d3
         .select('#chart')

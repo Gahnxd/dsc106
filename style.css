@@ -12,7 +12,7 @@ body {
         and use the OS’s UI font as the website font
       */
   font: 100%/1.5 system-ui;
-  max-width: min(120ch, 80vw);
+  max-width: 116ch;
   margin-inline: auto;
   padding: 1em;
 }
