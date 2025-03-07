@@ -10,7 +10,7 @@
     <script src="./main.js" type="module"></script>
 </head>
 
-<body>
+<body style="max-width: 200ch !important;">
     <h1>Meta Stats</h1>
     <div id="stats"></div>
     <h2>Commits by time of day</h2>
@@ -22,20 +22,28 @@
         </label>
     </div> -->
 
-    <dl class="files"></dl>
-
     <div id="scrollytelling">
-        <div id="scroll-container">
+        <div id="scroll-container1">
             <div id="spacer"></div>
-            <div id="items-container"></div>
+            <div id="items-container1"></div>
         </div>
 
-        <div id="chart"></div>
+        <div id="chart-container">
+            <div id="chart"></div>
+            <div id="stats-box">
+                <p id="selection-count">No commits selected</p>
+                <dl id="language-breakdown" class="selected-stats"></dl>
+            </div>
+        </div>
     </div>
 
-    <div id="stats-box">
-        <p id="selection-count">No commits selected</p>
-        <dl id="language-breakdown" class="selected-stats"></dl>
+    <div id="scrollytelling">
+        <div id="scroll-container2">
+            <div id="spacer"></div>
+            <div id="items-container2"></div>
+        </div>
+
+        <dl class="files"></dl>
     </div>
 
     <dl id="commit-tooltip" class="info tooltip" hidden>

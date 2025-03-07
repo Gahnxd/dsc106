@@ -11,16 +11,26 @@ let ITEM_HEIGHT = 80;
 let VISIBLE_COUNT = 8; // Number of visible items at a time
 let totalHeight = (NUM_ITEMS - 1) * ITEM_HEIGHT;
 
-const scrollContainer = d3.select("#scroll-container");
+const scrollContainer = d3.select("#scroll-container1");
 const spacer = d3.select("#spacer");
 spacer.style("height", `${totalHeight}px`);
-const itemsContainer = d3.select("#items-container");
+const itemsContainer = d3.select("#items-container1");
 
 scrollContainer.on("scroll", () => {
     const scrollTop = scrollContainer.property("scrollTop");
     let startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
     startIndex = Math.max(0, Math.min(startIndex, commits.length - VISIBLE_COUNT));
     renderItems(startIndex);
+});
+
+const fileScrollContainer = d3.select("#scroll-container2");
+const fileItemsContainer = d3.select("#items-container2");
+
+fileScrollContainer.on("scroll", () => {
+    const scrollTop = fileScrollContainer.property("scrollTop");
+    let startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
+    startIndex = Math.max(0, Math.min(startIndex, commits.length - VISIBLE_COUNT));
+    renderFileItems(startIndex);
 });
 
 function renderItems(startIndex) {
@@ -51,7 +61,7 @@ function renderItems(startIndex) {
             const timePart = parts[parts.length - 1]; // The last part (time)
             
             return `
-                On <b>${datePart}</b> at ${timePart}, <br>
+                On <b>${datePart}</b> at ${timePart},
                 ${d.author} made commit <a href="${d.url}" target="_blank">${d.id}</a> :
                 <b>${d.totalLines} lines</b> were edited across 
                 <b>${ d3.rollups(d.lines, D => D.length, d => d.file).length } files</b>. 
@@ -60,10 +70,48 @@ function renderItems(startIndex) {
 
     // Update the scatterplot based on scrolling commits
     createScatterplot(newCommitSlice);
-    displayCommitFiles();
 }
 
-function displayCommitFiles() {
+function renderFileItems(startIndex) {
+    // Clear previous items
+    fileItemsContainer.selectAll("div").remove();
+
+    const endIndex = Math.min(startIndex + VISIBLE_COUNT, commits.length);
+
+    // sort commits by date
+    let sorted = commits.sort((a, b) => a.datetime - b.datetime);
+
+    let newFileSlice = sorted.slice(startIndex, endIndex);
+
+    let fileDivs = fileItemsContainer.selectAll("div")
+        .data(sorted)
+        .enter()
+        .append("div")
+        .attr("class", "item")
+        .style("position", "absolute")
+        .style("top", (_, idx) => `${idx * ITEM_HEIGHT}px`)
+        
+    // Append narrative paragraph to each commit
+    fileDivs.append("p")
+        .html(d => {
+            const dateTime = d.datetime.toLocaleString("en", {dateStyle: "full", timeStyle: "full"});
+            const parts = dateTime.split(' at'); // Split date and time parts
+            const datePart = parts.slice(0, -1); // Everything except the last part (time)
+            const timePart = parts[parts.length - 1]; // The last part (time)
+            
+            return `
+                On <b>${datePart}</b> at ${timePart},
+                ${d.author} made commit <a href="${d.url}" target="_blank">${d.id}</a> :
+                <b>${d.totalLines} lines</b> were edited across 
+                <b>${ d3.rollups(d.lines, D => D.length, d => d.file).length } files</b>. 
+            `;
+        });
+
+    // Ensure file-based visualization updates correctly
+    updateFileList(newFileSlice);
+}
+
+function displayCommitFiles(filteredCommits) {
     const lines = filteredCommits.flatMap(d => d.lines);
     let fileTypeColors = d3.scaleOrdinal(d3.schemeTableau10);
 
@@ -198,7 +246,7 @@ function filterCommitsByTime() {
     filteredCommits = commits.filter(d => d.datetime <= commitMaxTime);
 }
 
-function updateFileList() {
+function updateFileList(filteredCommits) {
     let lines = filteredCommits.flatMap(d => d.lines); // Get all lines from commits
     let files = d3.groups(lines, d => d.file) // Group by file
         .map(([name, lines]) => ({ name, lines })); // Convert to array of objects
@@ -350,7 +398,7 @@ function createScatterplot(filteredCommits){
             updateTooltipVisibility(false);
         });
 
-    updateFileList();
+    // updateFileList();
 
     brushSelector();
     brushed({ selection: null });
@@ -477,20 +525,14 @@ function updateLanguageBreakdown() {
     return breakdown;
 }
 
-function resetBrush() {
-    d3.select('svg').call(d3.brush().move, null);
-    brushSelection = null;
-    updateSelection();
-    selectedCommits = updateSelectionCount();
-    updateLanguageBreakdown();
-}
 
 document.addEventListener('DOMContentLoaded', async () => {
     await loadData();
     renderItems(0); // Start Scrollytelling with the first batch of commits
+    renderFileItems(0); // Load files scrollytelling with the first batch of files
     filterCommitsByTime();
-    createScatterplot(filteredCommits);
-    updateFileList();
+    // createScatterplot(filteredCommits);
+    // displayCommitFiles(filteredCommits);
     // d3.select("#selectedTime").text(timeScale.invert(commitProgress).toLocaleString());
     // document.getElementById("commit-slider").addEventListener("input", (event) => {
     //     commitProgress = Number(event.target.value);

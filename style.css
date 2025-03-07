@@ -506,6 +506,7 @@ circle.selected {
 }
 
 .files {
+  grid-column: 2;
   display: grid;
   grid-template-columns: auto 1fr;
   margin: 20px 0;
@@ -550,13 +551,18 @@ circle.selected {
   grid-template-columns: subgrid;
 }
 
-#scroll-container {
+#chart-container {
+  grid-column: 2;
+}
+
+#scroll-container1, #scroll-container2 {
   grid-column: 1;
   position: relative;
-  width: 95%;
-  height: 350px;
+  width: 90%;
+  height: 45em;
   overflow-y: scroll;
-  border: 1px solid #ccc;
+  border: 1px dotted #ccc;
+  scrollbar-width:none;
   margin-bottom: 50px;
 }
 
@@ -569,10 +575,13 @@ circle.selected {
   pointer-events: none;
 }
 
-#items-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+#items-container1 {
+  position: relative;
+  width: 100%;
+}
+
+#items-container2 {
+  position: relative;
   width: 100%;
 }
 
@@ -582,5 +591,5 @@ circle.selected {
   border-bottom: 2px solid #eee;
   text-align: left;
   align-items: center;
-  height: 80px;
+  height: auto;
 }
