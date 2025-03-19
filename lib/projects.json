@@ -17,7 +17,7 @@
         "title": "Wine Recommender",
         "image": "./images/wine_recommender.webp",
         "year": "2025",
-        "description": "Wine recommender system that uses both content-based predictions and collaborative filtering to provide personalized wine recommendations. <br> <i>Project is still in development</i>.",
+        "description": "Wine recommender system that uses content-based predictions to start up a collaborative filtering algorithm to provide new users with personalized wine recommendations.",
         "link": ""
     },
     {
