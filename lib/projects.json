@@ -15,10 +15,10 @@
     },
     {
         "title": "Wine Recommender",
-        "image": "./images/wine_recommender.webp",
+        "image": "./images/wine_recommender_cover.jpg",
         "year": "2025",
         "description": "Wine recommender system that uses content-based predictions to start up a collaborative filtering algorithm to provide new users with personalized wine recommendations.",
-        "link": ""
+        "link": "https://youtu.be/b53x8xRCfKI?feature=shared"
     },
     {
         "title": "League of Legends Side and Picks Analysis",
