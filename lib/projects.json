@@ -61,26 +61,5 @@
         "year": "2025",
         "description": "Developed an interactive map to visualize Boston's bike traffic. Implemented time-based filtering and a custom legend for better insights. Optimized geospatial data processing for efficient map rendering.",
         "link": "https://gahnxd.github.io/pedal-powered-perspectives/"
-    },
-    {
-        "title": "Accusamus at quo laborum.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "year": "2022",
-        "description": "Placeat harum at fuga quia iste. Voluptatem earum eius optio, quod natus nesciunt nihil quisquam soluta\n                saepe odit id reprehenderit ducimus consequatur nam nobis minus, ullam ut. Modi, quasi facere.",
-        "link": ""
-    },
-    {
-        "title": "Odit ipsum fugit consectetur.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "year": "2022",
-        "description": "Beatae quasi aspernatur provident aliquam adipisci enim accusamus culpa error, natus veritatis est\n                incidunt ad rem, quia quidem possimus nemo deserunt assumenda? Optio, obcaecati vitae nam totam expedita\n                incidunt quisquam.",
-        "link": ""
-    },
-    {
-        "title": "Fuga tempore nemo quaerat?",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "year": "2023",
-        "description": "Temporibus quam illo eveniet sapiente rem nemo repellat similique. Odit modi ipsum reiciendis eaque, illo\n                ea similique repellat, officia obcaecati sunt iusto corrupti fugit, tempora suscipit minus! Molestiae,\n                facilis assumenda?",
-        "link": ""
     }
 ]
